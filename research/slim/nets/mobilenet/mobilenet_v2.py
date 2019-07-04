@@ -41,6 +41,7 @@ expand_input = ops.expand_input_by_factor
 # Architecture: https://arxiv.org/abs/1801.04381
 V2_DEF = dict(
     defaults={
+        #batch norm 会影响网络结构，所以放在这里
         # Note: these parameters of batch norm affect the architecture
         # that's why they are here and not in training_scope.
         (slim.batch_norm,): {'center': True, 'scale': True},
