@@ -35,6 +35,7 @@ def apply_activation(x, name=None, activation_fn=None):
 
 def _fixed_padding(inputs, kernel_size, rate=1):
   """Pads the input along the spatial dimensions independently of input size.
+  #空洞卷积对图像尺寸进行padding
 
   Pads the input such that if it was used in a convolution with 'VALID' padding,
   the output would have the same dimensions as if the unpadded input was used
@@ -156,7 +157,8 @@ def mobilenet_base(  # pylint: disable=invalid-name
     scope=None,
     is_training=False):
   """Mobilenet base network.
-
+  
+  #定义基础网络结构
   Constructs a network from inputs to the given final endpoint. By default
   the network is constructed in inference mode. To create network
   in training mode use:
@@ -165,8 +167,11 @@ def mobilenet_base(  # pylint: disable=invalid-name
      logits, endpoints = mobilenet_base(...)
 
   Args:
+  #输入张量，batch_sieze,height,width,channels
     inputs: a tensor of shape [batch_size, height, width, channels].
+    #op，定义网络架构
     conv_defs: A list of op(...) layers specifying the net architecture.
+    #
     multiplier: Float multiplier for the depth (number of channels)
       for all convolution ops. The value must be greater than zero. Typical
       usage will be to set this value in (0, 1) to reduce the number of
